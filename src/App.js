@@ -5,7 +5,7 @@ import Header from "./components/layout/Header";
 import Home from "./components/pages/Home";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import UserContext from "./context/UserContext";
+import UserContext from './context/UserContext';
 
 import "./style.css";
 
@@ -23,12 +23,12 @@ export default function App() {
         token = "";
       }
       const tokenRes = await Axios.post(
-        "http://localhost:5000/users/tokenIsValid",
+        "https://mern-auth-template-back.herokuapp.com/users/tokenIsValid",
         null,
         { headers: { "x-auth-token": token } }
       );
       if (tokenRes.data) {
-        const userRes = await Axios.get("http://localhost:5000/users/", {
+        const userRes = await Axios.get("https://mern-auth-template-back.herokuapp.com/users/", {
           headers: { "x-auth-token": token },
         });
         setUserData({
