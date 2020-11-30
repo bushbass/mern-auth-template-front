@@ -30,3 +30,13 @@ Add todo page
     create a form for title and get token from context.userdata.token
     create controlled form so we need to add state
     import context to get token
+    create submit function
+        //get title from state
+        //get token for headers from context
+        //submit it to backend
+        //redirect to showtodos page
+Show todos page 
+    useEffect - axios.get with auth headers
+                so we need to import context and get userdata
+                save array of todo objects to state
+                map over array

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 /* reset */
 
@@ -19,7 +19,7 @@ ul {
 }
 
 button,
-input[type="submit"] {
+input[type='submit'] {
   border: none;
   background: none;
   color: unset;
@@ -43,7 +43,7 @@ li {
 /* general */
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .page {
@@ -95,9 +95,9 @@ body {
 .form label {
   margin-bottom: 0.2rem;
 }
-.form input[type="text"],
-.form input[type="email"],
-.form input[type="password"] {
+.form input[type='text'],
+.form input[type='email'],
+.form input[type='password'] {
   width: 100%;
   padding: 0.3rem;
   border: 1px solid #c2c2c2;
@@ -110,7 +110,7 @@ body {
   box-shadow: inset 0px 0px 5px rgba(38, 142, 228, 0.5);
   outline: none;
 }
-.form input[type="submit"] {
+.form input[type='submit'] {
   padding: 0.3rem 0.5rem;
   border: 1px solid #6aa051;
   border-radius: 8px;
@@ -127,6 +127,11 @@ body {
 
 .todo-list li:hover {
   text-decoration: line-through;
+}
+button {
+  background-color: #ebb6b6;
+  padding: 3px;
+  border-radius: 3px;
 }
 
 /* error notice */
