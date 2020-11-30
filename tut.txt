@@ -1,0 +1,32 @@
+backend
+    /users/register     POST    auth-no     returns {_id:id,email,string,password:hash,displayname:string}
+    /users/login        POST    auth-no     returns {token:string,user:{id:id,displayname:string}}
+    /users/delete       DELETE  auth-yes    returns user object same as above
+    /users/tokenIsValid POST    auth-yes    returns boolean
+    /users              GET     auth-yes    returns current logged in user
+
+    /todos              POST    auth-yes    returns todo -> {_id:string,title:string,userId:string} 
+    /todos/all          GET     auth-yes    returns array of todos 
+    /todos:id           DELETE  auth-yes    returns deleted todo
+
+frontend
+    App.js
+        useEffect - checks if there is a token in local storage
+                    checks if it is a valid token 
+                    gets current user object {displayname:string, id:string}
+                    adds current user object and token to state 'userData'
+        <UserContext.Provider value={{ userData, setUserData }}>
+                    provides access to userData to all child component
+        userData = {token:string, user:{id:string,displayname:string}}
+
+
+The plan
+    create dummy pages - add todo, show all todos
+    add these to authoptions so they show up in nav when logged in
+    in App.js import pages and add them to switch 
+
+Add todo page
+    need to send the 'title' for the todo and Token in the header
+    create a form for title and get token from context.userdata.token
+    create controlled form so we need to add state
+    import context to get token
