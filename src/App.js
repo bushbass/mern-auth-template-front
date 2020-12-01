@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Axios from "axios";
-import Header from "./components/layout/Header";
-import Home from "./components/pages/Home";
-import Login from "./components/auth/Login";
-import Register from "./components/auth/Register";
-import UserContext from "./context/UserContext";
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Axios from 'axios';
+import Header from './components/layout/Header';
+import Home from './components/pages/Home';
+import Login from './components/auth/Login';
+import AddTodo from './components/pages/AddTodo';
+import ShowTodos from './components/pages/ShowTodos';
+import Register from './components/auth/Register';
+import UserContext from './context/UserContext';
 
-import "./style.css";
+import './style.css';
 
 export default function App() {
   const [userData, setUserData] = useState({
@@ -17,19 +19,19 @@ export default function App() {
 
   useEffect(() => {
     const checkLoggedIn = async () => {
-      let token = localStorage.getItem("auth-token");
+      let token = localStorage.getItem('auth-token');
       if (token === null) {
-        localStorage.setItem("auth-token", "");
-        token = "";
+        localStorage.setItem('auth-token', '');
+        token = '';
       }
       const tokenRes = await Axios.post(
-        "http://localhost:5000/users/tokenIsValid",
+        'http://localhost:5000/users/tokenIsValid',
         null,
-        { headers: { "x-auth-token": token } }
+        { headers: { 'x-auth-token': token } }
       );
       if (tokenRes.data) {
-        const userRes = await Axios.get("http://localhost:5000/users/", {
-          headers: { "x-auth-token": token },
+        const userRes = await Axios.get('http://localhost:5000/users/', {
+          headers: { 'x-auth-token': token },
         });
         setUserData({
           token,
@@ -46,11 +48,13 @@ export default function App() {
       <BrowserRouter>
         <UserContext.Provider value={{ userData, setUserData }}>
           <Header />
-          <div className="container">
+          <div className='container'>
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
+              <Route exact path='/' component={Home} />
+              <Route path='/login' component={Login} />
+              <Route path='/register' component={Register} />
+              <Route path='/showTodos' component={ShowTodos} />
+              <Route path='/addTodo' component={AddTodo} />
             </Switch>
           </div>
         </UserContext.Provider>
