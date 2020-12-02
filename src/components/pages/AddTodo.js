@@ -27,6 +27,7 @@ function AddTodo() {
   };
   return (
     <div>
+      <h1>Add new todo</h1>
       <form onSubmit={submitForm}>
         <label htmlFor='todo-title'>New todo</label>
         <input
@@ -35,6 +36,7 @@ function AddTodo() {
           id='todo-title'
           type='text'
         />
+        <button>Add Todo</button>
       </form>
     </div>
   );

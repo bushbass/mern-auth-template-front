@@ -26,7 +26,7 @@ function ShowTodos() {
 
   return (
     <div>
-      show todos
+      <h1>Todos</h1>
       {todos.map((todo) => {
         return (
           <li key={todo._id}>
