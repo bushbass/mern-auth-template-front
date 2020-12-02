@@ -3,26 +3,26 @@ import Axios from 'axios';
 import UserContext from '../../context/UserContext';
 
 function ShowTodos() {
-  const { userData, setUserData } = useContext(UserContext);
+  const { userData } = useContext(UserContext);
   const [todos, setTodos] = useState([]);
-  const deleteTodo = async (id) => {
-    await Axios.delete(`http://localhost:5000/todos/${id}`, {
-      headers: { 'x-auth-token': userData.token },
-    });
-    fetchTodos();
-    //refresh page or update state force refresh
-  };
 
-  const fetchTodos = async () => {
+  const fetchTodos = async (token) => {
     const todosResponse = await Axios.get('http://localhost:5000/todos/all', {
-      headers: { 'x-auth-token': userData.token },
+      headers: { 'x-auth-token': token },
     });
     setTodos(todosResponse.data);
   };
 
   useEffect(() => {
-    fetchTodos();
-  }, []);
+    fetchTodos(userData.token);
+  }, [userData.token]);
+
+  const deleteTodo = async (id) => {
+    await Axios.delete(`http://localhost:5000/todos/${id}`, {
+      headers: { 'x-auth-token': userData.token },
+    });
+    fetchTodos(userData.token);
+  };
 
   return (
     <div>

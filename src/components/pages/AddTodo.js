@@ -4,7 +4,7 @@ import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 function AddTodo() {
-  const { userData, setUserData } = useContext(UserContext);
+  const { userData } = useContext(UserContext);
   const [todoTitle, setTodoTitle] = useState('');
   const history = useHistory();
 
